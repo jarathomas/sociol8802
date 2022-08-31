@@ -1,0 +1,255 @@
+---
+title: |
+ | Getting Started with
+ |
+ | 
+ | 
+ |                                                 Proseminar for GSID
+author: |
+ | Jason Thomas, IPR Research Scientist
+ | thomas.3912@osu.edu
+date: "Sept. 1st, 2022"
+header-includes:
+- \titlegraphic{\hspace{2in} \includegraphics[width=100px]{Rlogo.png}}
+output: beamer_presentation
+linkcolor: red
+urlcolor: blue
+citecolor: green
+latex_engine: xelatex
+theme: "metropolis"
+highlight: "espresso"
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Why R we here?
+
+* **R is a (computing) language and an interpreter that turns commands into...**
+    - data manipulation, statistical analysis, graphics, & programming 
+    - a useful tool for getting started: [R Studio IDE](https://www.rstudio.com/products/rstudio/download/#download) (Integrated Development Environment) \pause
+
+* **Large Community of Users**
+    - free software (in both senses)
+    - R *packages* on [**C**omprehensive **R** **A**rchive **Network** (CRAN)](https://cran.r-project.org/)
+    - Google / Stack overflow / Jason \pause
+    
+* **Make Your Research Reproducible** (and Accessible)
+    - [Dynamic Documents](https://rmarkdown.rstudio.com/lesson-1.html)
+    - [Shiny Apps](https://shiny.rstudio.com/gallery/)
+
+
+## Agenda
+
+* **Sept 1$^{st}$**
+
+    - [R markdown](https://rmarkdown.rstudio.com/lesson-1.html) (and dynamic documents)
+    - Basic R syntax and data structures
+
+* **Sept 9$^{th}$**
+
+    - cleaning & preparing data
+    - regression
+    - making tables & figures
+
+* **GitHub**: [https://github.com/jarathomas/sociol8802](https://github.com/jarathomas/sociol8802)
+
+
+## Motivation: Dynamic Documents
+
+* Use a *single* file to weave data output and substantive text \pause
+
+  - reduce the number of steps to create the final document (e.g., academic article) and efficiently
+  reproduce those steps \pause
+  
+  - if we want publication-quality product, we need a simple language to add structure and formatting...\pause
+  enter *markdown* \pause
+  
+* There are several tools for creating dynamic documents that are available in different
+stats packages \pause
+
+  -  **R Markdown** is a popular R package (and rightfully so)
+  - output options include: pdf (paper and slides); MS Office (Word & PowerPoint)
+
+
+## Markdown
+
+Syntax for adding styling to your documents (we'll see this again)
+
+* \*\***this is bold**\*\* and *\* this is italicized *\*
+
+* lists with asterisks, dashes, plus sign (nested lists with indentation)
+
+* section headers (add more \# for subsections)
+
+    + $\Large \mbox{\# Section 1}$
+    + $\large \mbox{\#\# Section 2}$
+
+* Web links: `[link name](link url)`:
+  - e.g. `[R markdown](https://rmarkdown.rstudio.com/)`
+  - [R markdown](https://rmarkdown.rstudio.com/)
+
+
+## Installing R Markdown (& dependencies)
+
+We need to install a few programs & packages to get up and running (all of the default options are fine)
+
+* (good idea to go with RStudio for this) \pause
+
+* Mac users should install **X Quartz** program from [https://www.xquartz.org/](https://www.xquartz.org/), which is used by Mac to show plots \pause
+
+* \LaTeX is needed to create PDFs (can do this through R packages as we will now see)
+
+
+## R Packages for R Markdown
+
+Open R Studio, then copy and paste the following command into the **Console** pane.  
+
+```{r install, eval=FALSE, include=TRUE, echo=TRUE}
+install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
+                 repos = "http://cran.r-project.org")
+```
+
+
+*Note*: this assumes you do not have \LaTeX installed on your computer \newline
+(which is needed to create PDF files with R Markdown.)
+
+
+## R Packages (cont.)
+
+* Install a small version of \LaTeX  (using the `tinytex` package) with the following command (in the R Studio console)
+  
+    ```{r tinytex, eval=FALSE, include=TRUE, echo=TRUE}
+    tinytex::install_tinytex()
+    ```
+    
+    (this will take a few minutes)
+
+* Windows users may see a warning about needing to install the Rtools program, and 2 warnings complaining about missing files associated with `luatex.dll`
+
+  - but these can all be ignored.
+
+
+## R Packages (cont.) Warning Messages
+
+* Here are 3 screenshots of the informational and (2) warning messages that Windows users can safely ignore.
+
+![informational message](error_msg1.PNG)
+
+
+## R Packages (cont.) Warning Messages 1
+
+(can safely ignore)
+
+![1st warning message](error_msg2.PNG)
+
+
+## R Packages (cont.) Warning Messages 2
+
+(can safely ignore)
+
+![2nd warning message](error_msg3.PNG)
+
+
+## R Packages (cont.)
+
+* If you would like to test your `tinytex` installation, close R Studio, then re-open it and run the following command
+
+    ```{r is_tinytex, eval=FALSE, include=TRUE, echo=TRUE}
+    tinytex:::is_tinytex()  ## should return TRUE
+    ```
+
+* Note the 3 colons after `tinytex`.   If the above command returns a value of `TRUE`, then you are all set.
+
+
+## Example Dynamic Document
+
+* In the R Studio menu bar: **File**...**New File**...**R Markdown**
+
+  + Choose **Document** (either PDF or Word is fine)
+  
+  + This will provide us with a basic template for a dynamic document (with **code chunks**)
+
+* References for syntax:
+
+  + [cheat sheet (pdf)](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+  + [an html ref](https://stats.oarc.ucla.edu/stat/data/rmarkdown/rmarkdown_seminar_flat.html#spacing-and-paragraphs)
+
+
+## Example Dynamic Document: code chunks
+
+* A code chunk is the term for 
+
+* Useful options:
+  + `echo = FALSE` - don't show the code, but do show the results in the dynamic doc
+  + `include = FALSE` - exclude code and results from appearing in the dynamic doc 
+  + `eval = FALSE` - don't run the code in the code chunk
+
+* [All the options](https://yihui.org/knitr/options/#code-evaluation)
+   
+
+## Basic Syntax: useful admin commands
+
+
+* `date()`; `getwd()`; `dir()`; `dir("../")`; `ls()`
+  
+  + getting help...
+
+
+
+## Basic 
+
+* Saving & Loading Data
+
+  + `save.image()`
+  + `save(object1, file = "file_name.RData")`
+  + `load("file_name.RData")`
+  + `data <- read.csv("file_name.csv")`
+
+* Installing and loading packages
+
+  + `library()` - list the installed packages
+  + `library(package name)` - load package
+    - e.g. `install.packages("haven")`
+  + `install.packages("")` - install a package (only need to do this one time)
+  + `update.packages()` & `remove.packages("package name")`
+
+
+## Data Structures
+
+* R has different structures for holding data, which can be 
+organized by...
+
+    + how many dimensions does it have?
+
+    + do the types of data need to be the same?
+
+  
+## Data Structures
+
+* **Vectors**
+  1. 1 dimension
+  1. same data type
+    + special case: **factor** (predefined categories) 
+
+* **Matrices**
+  1. rows and columns
+  1. same data type 
+
+* **Arrays** 
+  1. any number of dimensions
+  1. same data type 
+
+  
+## Data Structures
+
+* **Data Frames**
+  1. rows and columns
+  1. different data types 
+
+* **Lists**
+  1. 1 dimension
+  1. different data types (and structures)
