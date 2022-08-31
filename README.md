@@ -4,13 +4,14 @@ This repository contains materials for introducing you to R with an emphasis on 
 and [dynamic documents](https://rmarkdown.rstudio.com/lesson-9.html).
 
 
-# Getting Started (9/1/22)
 
-  * R & R Studio
-  * R markdown
+# Getting Started with &nbsp;  <img src="https://www.r-project.org/logo/Rlogo.png" width="48"> &nbsp;&nbsp; (Sept 1<sup>st</sup>)
+
+  * [R](https://cran.r-project.org/) & [R Studio](https://www.rstudio.com/)
+  * [R markdown](https://rmarkdown.rstudio.com/gallery.html)
   * Basic syntax & data structures
 
-# More R (9/8/22)
+# More &nbsp;  <img src="https://www.r-project.org/logo/Rlogo.png" width="48"> &nbsp;&nbsp; (Sept 8<sum>th</sup>)
 
   * Wrestling with data sets
   * Regression
