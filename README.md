@@ -17,3 +17,32 @@ and [dynamic documents](https://rmarkdown.rstudio.com/lesson-9.html).
   * Regression
   * Making tables & figures
   
+
+<br/><br/>
+
+## Instructions for installing R markdown
+  
+  * Mac users will want to install the **X Quartz** program from [https://www.xquartz.org/](https://www.xquartz.org/)
+    + (Mac uses this program to show plots)
+  
+  * to install R markdown and LaTeX, run the following command in the R Studio (or R) console
+  
+  ```r
+  install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
+                     repos = "http://cran.r-project.org")
+  ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Windows users may see a warning about needing to install the Rtools program, and 2 warnings complaining about missing files  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; associated with `luatex.dll`, but these can all be ignored.
+  
+   * one more command to actually install LaTex:
+      
+  ```r
+  tinytex::install_tinytex()
+  ```
+  
+   * To test your `tinytex` installation: close R Studio, re-open it, and run the following command in the console
+    
+  ```r
+  tinytex:::is_tinytex() ## should return TRUE
+  ```
+    
