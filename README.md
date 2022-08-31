@@ -14,5 +14,5 @@ and [dynamic documents](https://rmarkdown.rstudio.com/lesson-9.html).
 
   * Wrestling with data sets
   * Regression
-  * Making tables & Figures
+  * Making tables & figures
   
