@@ -10,7 +10,7 @@ author: |
  | thomas.3912@osu.edu
 date: "Sept. 1st, 2022"
 header-includes:
-- \titlegraphic{\hspace{2in} \includegraphics[width=100px]{png/Rlogo.png}}
+- \titlegraphic{\hspace{2in} \includegraphics[width=100px]{../png/Rlogo.png}}
 output: beamer_presentation
 linkcolor: red
 urlcolor: blue
@@ -157,21 +157,21 @@ a dependency of **rmarkdown**)
 
 * Here are 3 screenshots of the informational and (2) warning messages that Windows users can safely ignore.
 
-![informational message](png/error_msg1.PNG)
+![informational message](../png/error_msg1.PNG)
 
 
 ## R Packages (cont.) Warning Messages 1
 
 (can safely ignore)
 
-![1st warning message](png/error_msg2.PNG)
+![1st warning message](../png/error_msg2.PNG)
 
 
 ## R Packages (cont.) Warning Messages 2
 
 (can safely ignore)
 
-![2nd warning message](png/error_msg3.PNG)
+![2nd warning message](../png/error_msg3.PNG)
 
 
 ## R Packages (cont.)
@@ -257,8 +257,8 @@ plot(cars)
 click on the knitting needles icon in the toolbar to produce the output (don't forget to 
 save your file)
 
-![1st warning message](png/dyn_doc.png)
-   
+![1st warning message](../png/dyn_doc.png)
+
 
 ## Intro to R Syntax & Data Structures
 
