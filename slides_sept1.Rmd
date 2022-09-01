@@ -10,7 +10,7 @@ author: |
  | thomas.3912@osu.edu
 date: "Sept. 1st, 2022"
 header-includes:
-- \titlegraphic{\hspace{2in} \includegraphics[width=100px]{Rlogo.png}}
+- \titlegraphic{\hspace{2in} \includegraphics[width=100px]{png/Rlogo.png}}
 output: beamer_presentation
 linkcolor: red
 urlcolor: blue
@@ -30,24 +30,27 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * **R is a (computing) language and an interpreter that turns commands into...**
     - data manipulation, statistical analysis, graphics, & programming 
-    - a useful tool for getting started: [R Studio IDE](https://www.rstudio.com/products/rstudio/download/#download) (Integrated Development Environment) \pause
+    - a useful tool for getting started: [\textcolor{blue}{R Studio IDE}](https://www.rstudio.com/products/rstudio/download/#download) (Integrated Development Environment) \pause
 
 * **Large Community of Users**
     - free software (in both senses)
-    - R *packages* on [**C**omprehensive **R** **A**rchive **Network** (CRAN)](https://cran.r-project.org/)
+    - R *packages* on [\textcolor{blue}{**C**omprehensive **R** **A**rchive **Network** (CRAN)}](https://cran.r-project.org/)
     - Google / Stack overflow / Jason \pause
     
 * **Make Your Research Reproducible** (and Accessible)
-    - [Dynamic Documents](https://rmarkdown.rstudio.com/lesson-1.html)
-    - [Shiny Apps](https://shiny.rstudio.com/gallery/)
+    - [\textcolor{blue}{Dynamic Documents}](https://rmarkdown.rstudio.com/lesson-1.html)
+    - [\textcolor{blue}{Shiny Apps}](https://shiny.rstudio.com/gallery/)
 
 
 ## Agenda
 
 * **Sept 1$^{st}$**
 
-    - [R markdown](https://rmarkdown.rstudio.com/lesson-1.html) (and dynamic documents)
-    - Basic R syntax and data structures
+  - [\textcolor{blue}{R markdown}](https://rmarkdown.rstudio.com/lesson-1.html) (and dynamic documents)
+    + motivation, basic syntax, installation, & simple example \pause
+  - Basic R syntax and data structures
+    + R script with useful commands for getting started
+    + understanding R objects \pause
 
 * **Sept 9$^{th}$**
 
@@ -55,7 +58,7 @@ knitr::opts_chunk$set(echo = FALSE)
     - regression
     - making tables & figures
 
-* **GitHub**: [https://github.com/jarathomas/sociol8802](https://github.com/jarathomas/sociol8802)
+* **GitHub**: [\textcolor{blue}{https://github.com/jarathomas/sociol8802}](https://github.com/jarathomas/sociol8802)
 
 
 ## Motivation: Dynamic Documents
@@ -65,13 +68,26 @@ knitr::opts_chunk$set(echo = FALSE)
   - reduce the number of steps to create the final document (e.g., academic article) and efficiently
   reproduce those steps \pause
   
-  - if we want publication-quality product, we need a simple language to add structure and formatting...\pause
-  enter *markdown* \pause
+  - if we want publication-quality product, we need a simple language to add structure and formatting...
+  enter *markdown* pause
+  
+  \vspace{12pt}
+  
+  > "A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions."
+  >
+  > `r tufte::quote_footer("—-- John Gruber")`
+
+
+## Motivation: Dynamic Documents (cont.)
+
+
+* Weave in results/data/tables/figures using **code chunks** -- sections that include R code for
+  processing data & creating output \pause
   
 * There are several tools for creating dynamic documents that are available in different
 stats packages \pause
 
-  -  **R Markdown** is a popular R package (and rightfully so)
+  - **R Markdown** (powered by **knitr** and **pandoc**) is a popular R package (and rightfully so)
   - output options include: pdf (paper and slides); MS Office (Word & PowerPoint)
 
 
@@ -90,7 +106,7 @@ Syntax for adding styling to your documents (we'll see this again)
 
 * Web links: `[link name](link url)`:
   - e.g. `[R markdown](https://rmarkdown.rstudio.com/)`
-  - [R markdown](https://rmarkdown.rstudio.com/)
+  - [\textcolor{blue}{R markdown}](https://rmarkdown.rstudio.com/)
 
 
 ## Installing R Markdown (& dependencies)
@@ -99,7 +115,7 @@ We need to install a few programs & packages to get up and running (all of the d
 
 * (good idea to go with RStudio for this) \pause
 
-* Mac users should install **X Quartz** program from [https://www.xquartz.org/](https://www.xquartz.org/), which is used by Mac to show plots \pause
+* Mac users should install **X Quartz** program from [\textcolor{blue}{https://www.xquartz.org/}](https://www.xquartz.org/), which is used by Mac to show plots \pause
 
 * \LaTeX is needed to create PDFs (can do this through R packages as we will now see)
 
@@ -113,9 +129,13 @@ install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
                  repos = "http://cran.r-project.org")
 ```
 
+\pause
 
-*Note*: this assumes you do not have \LaTeX installed on your computer \newline
+* *Note 1:* this assumes you do not have \LaTeX installed on your computer \newline
 (which is needed to create PDF files with R Markdown.)
+
+* *Note 2:* **knitr** is an important package that will do the weaving (and gets installed as
+a dependency of **rmarkdown**)
 
 
 ## R Packages (cont.)
@@ -126,7 +146,7 @@ install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
     tinytex::install_tinytex()
     ```
     
-    (this will take a few minutes)
+    (this will take a few minutes) \pause
 
 * Windows users may see a warning about needing to install the Rtools program, and 2 warnings complaining about missing files associated with `luatex.dll`
 
@@ -137,21 +157,21 @@ install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
 
 * Here are 3 screenshots of the informational and (2) warning messages that Windows users can safely ignore.
 
-![informational message](error_msg1.PNG)
+![informational message](png/error_msg1.PNG)
 
 
 ## R Packages (cont.) Warning Messages 1
 
 (can safely ignore)
 
-![1st warning message](error_msg2.PNG)
+![1st warning message](png/error_msg2.PNG)
 
 
 ## R Packages (cont.) Warning Messages 2
 
 (can safely ignore)
 
-![2nd warning message](error_msg3.PNG)
+![2nd warning message](png/error_msg3.PNG)
 
 
 ## R Packages (cont.)
@@ -165,91 +185,161 @@ install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
 * Note the 3 colons after `tinytex`.   If the above command returns a value of `TRUE`, then you are all set.
 
 
-## Example Dynamic Document
+## Dynamic Document: intro
+
+Let's get some practice making a dynamic document (and using markdown)... \pause
 
 * In the R Studio menu bar: **File**...**New File**...**R Markdown**
 
-  + Choose **Document** (either PDF or Word is fine)
+  + Choose **Document** (any format is fine) \pause
   
-  + This will provide us with a basic template for a dynamic document (with **code chunks**)
+* This will provide us with a basic template for a dynamic document
 
-* References for syntax:
+  + *YAML* block -- section at the top (surrounded by 3 dashes) where we can add title info and set options 
+  (e.g., output format is PDF or Word doc)
+  
+  + **code chunks** -- blocks where we include R commands (that will be evaluated with the results included
+  in the dynamic doc) \pause
 
-  + [cheat sheet (pdf)](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-  + [an html ref](https://stats.oarc.ucla.edu/stat/data/rmarkdown/rmarkdown_seminar_flat.html#spacing-and-paragraphs)
+* Before we dive in a quick markdown review and more on code chunks
+
+## Dynamic Document: markdown syntax
+
+\small
+
+Quick recap of markdown formatting
+
+* \*\***this is bold**\*\* and *\* this is italicized *\*
+
+* lists with asterisks, dashes, plus sign (nested lists with indentation)
+
+* section headers (add more \# for subsections)
+
+    + $\Large \mbox{\# Section 1}$
+    + $\large \mbox{\#\# Section 2}$
+
+* Web links: `[link name](link url)`
+  - e.g. `[R markdown](https://rmarkdown.rstudio.com/)`
+  - [\textcolor{blue}{R markdown}](https://rmarkdown.rstudio.com/)
+
+* Links to References
+
+  - [\textcolor{blue}{cheat sheet (pdf)}](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+  - [\textcolor{blue}{an html ref}](https://stats.oarc.ucla.edu/stat/data/rmarkdown/rmarkdown_seminar_flat.html#spacing-and-paragraphs)
 
 
-## Example Dynamic Document: code chunks
+## Dynamic Document: code chunks
 
-* A code chunk is the term for 
+\small
 
+A **code chunk** is a *fenced* section that includes R code/commands that can get processed (think R code sandwich)
+
+* bread: 3 backticks, followed by an `{r}`, then code, and closed with another 3 backticks:
+
+````markdown
+`r ''````{r, echo = TRUE}
+3 + 6
+plot(cars)
+```
+````
+
+\pause
 * Useful options:
   + `echo = FALSE` - don't show the code, but do show the results in the dynamic doc
   + `include = FALSE` - exclude code and results from appearing in the dynamic doc 
   + `eval = FALSE` - don't run the code in the code chunk
 
-* [All the options](https://yihui.org/knitr/options/#code-evaluation)
+* [\textcolor{blue}{link to description of all options}](https://yihui.org/knitr/options/#code-evaluation)
    
 
-## Basic Syntax: useful admin commands
+## Intro to R Syntax & Data Structures
 
+We'll now shift gears a bit and introduce...
 
-* `date()`; `getwd()`; `dir()`; `dir("../")`; `ls()`
+1. a few basic R commands for getting started,
+
+2. some logic for understanding types of objects created by R
+
+  + (i.e., different ways we can hold data) \pause
   
-  + getting help...
+* probably best to open up the script `r_script_sept1.R` ([\textcolor{blue}{from GitHub repo}](https://github.com/jarathomas/sociol8802))
 
 
+## Basic Syntax: useful commands
 
-## Basic 
+* `date()` -- useful when running scripts in BATCH mode
+* `getwd()` & `setwd()` -- print and set the working directory
+* `dir()` or `dir("../")` -- print the files and folders in the given directory
+* `ls()` -- print the name of all objects currently loaded in R's memory
+* `rm(object1)` -- remove the object called `object1` from R's memory
+* Comments are lines that begin with pound/hash/#
+* `?date` -- will show the help file for the `date` command
+* `help.search("weighted mean")` -- search the help files for the term "weighted mean"
 
-* Saving & Loading Data
 
-  + `save.image()`
-  + `save(object1, file = "file_name.RData")`
-  + `load("file_name.RData")`
-  + `data <- read.csv("file_name.csv")`
+## Basic Syntax: saving & loading data
 
-* Installing and loading packages
+* `save.image("file_name.RData")` -- save everything in memory to a file called `file_name.RData`
+* `save(object1, object2, file = "file_name.RData")` -- save objects called `object1` and `object2` to a file called `file_name.RData`
+* `load("file_name.RData")` -- load the data file called "file_name.RData"
+* `data <- read.csv("file_name.csv")` -- load the contents of a CSV file
 
-  + `library()` - list the installed packages
-  + `library(package name)` - load package
-    - e.g. `install.packages("haven")`
-  + `install.packages("")` - install a package (only need to do this one time)
-  + `update.packages()` & `remove.packages("package name")`
+
+## Basic Syntax: R Packages
+
+* `library()` - list the installed packages
+* `library(package name)` - load the package called "package name"
+* `install.packages("package name")` - install a package (only need to do this one time)
+    + e.g. `install.packages("haven")`
+    + install multiple packages with `install.packages(c("dplyr", "ggplott2"))`
+* `update.packages()`
+* `remove.packages("package name")`
 
 
 ## Data Structures
 
-* R has different structures for holding data, which can be 
-organized by...
+* Now we'll learn the basic logic for understanding some of the different types of
+objects that R uses \pause
 
-    + how many dimensions does it have?
+* R has different structures for holding data, which can be 
+organized by... \pause
+
+    + how many dimensions does it have? \pause
 
     + do the types of data need to be the same?
 
   
 ## Data Structures
 
-* **Vectors**
+* **Vectors** \pause
+
   1. 1 dimension
+  
   1. same data type
-    + special case: **factor** (predefined categories) 
+    + special case: **factor** (predefined categories)  \pause
 
-* **Matrices**
+* **Matrices** \pause
+
   1. rows and columns
-  1. same data type 
+  
+  1. same data type \pause
 
-* **Arrays** 
+* **Arrays** \pause
+
   1. any number of dimensions
-  1. same data type 
+  1. same data type \pause
 
   
 ## Data Structures
 
-* **Data Frames**
-  1. rows and columns
-  1. different data types 
+* **Data Frames** \pause
 
-* **Lists**
+  1. rows and columns
+  
+  1. different data types \pause
+
+* **Lists** \pause
+
   1. 1 dimension
+  
   1. different data types (and structures)
