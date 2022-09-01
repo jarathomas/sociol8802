@@ -30,12 +30,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 * **R is a (computing) language and an interpreter that turns commands into...**
     - data manipulation, statistical analysis, graphics, & programming 
-    - a useful tool for getting started: [\textcolor{blue}{R Studio IDE}](https://www.rstudio.com/products/rstudio/download/#download) (Integrated Development Environment) \pause
+    - a useful tool for getting started: [\textcolor{blue}{R Studio IDE}](https://www.rstudio.com/products/rstudio/download/#download) (Integrated Development Environment) 
 
 * **Large Community of Users**
     - free software (in both senses)
     - R *packages* on [\textcolor{blue}{**C**omprehensive **R** **A**rchive **Network** (CRAN)}](https://cran.r-project.org/)
-    - Google / Stack overflow / Jason \pause
+    - Google / Stack overflow / Jason 
     
 * **Make Your Research Reproducible** (and Accessible)
     - [\textcolor{blue}{Dynamic Documents}](https://rmarkdown.rstudio.com/lesson-1.html)
@@ -47,10 +47,10 @@ knitr::opts_chunk$set(echo = FALSE)
 * **Sept 1$^{st}$**
 
   - [\textcolor{blue}{R markdown}](https://rmarkdown.rstudio.com/lesson-1.html) (and dynamic documents)
-    + motivation, basic syntax, installation, & simple example \pause
+    + motivation, basic syntax, installation, & simple example 
   - Basic R syntax and data structures
     + R script with useful commands for getting started
-    + understanding R objects \pause
+    + understanding R objects 
 
 * **Sept 9$^{th}$**
 
@@ -63,10 +63,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Motivation: Dynamic Documents
 
-* Use a *single* file to weave data output and substantive text \pause
+* Use a *single* file to weave data output and substantive text 
 
   - reduce the number of steps to create the final document (e.g., academic article) and efficiently
-  reproduce those steps \pause
+  reproduce those steps 
   
   - if we want publication-quality product, we need a simple language to add structure and formatting...
   enter *markdown* pause
@@ -82,10 +82,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 * Weave in results/data/tables/figures using **code chunks** -- sections that include R code for
-  processing data & creating output \pause
+  processing data & creating output 
   
 * There are several tools for creating dynamic documents that are available in different
-stats packages \pause
+stats packages 
 
   - **R Markdown** (powered by **knitr** and **pandoc**) is a popular R package (and rightfully so)
   - output options include: pdf (paper and slides); MS Office (Word & PowerPoint)
@@ -113,9 +113,9 @@ Syntax for adding styling to your documents (we'll see this again)
 
 We need to install a few programs & packages to get up and running (all of the default options are fine)
 
-* (good idea to go with RStudio for this) \pause
+* (good idea to go with RStudio for this) 
 
-* Mac users should install **X Quartz** program from [\textcolor{blue}{https://www.xquartz.org/}](https://www.xquartz.org/), which is used by Mac to show plots \pause
+* Mac users should install **X Quartz** program from [\textcolor{blue}{https://www.xquartz.org/}](https://www.xquartz.org/), which is used by Mac to show plots 
 
 * \LaTeX is needed to create PDFs (can do this through R packages as we will now see)
 
@@ -129,7 +129,7 @@ install.packages(c("rmarkdown", "tinytex", "rprojroot", "Rcpp"),
                  repos = "http://cran.r-project.org")
 ```
 
-\pause
+
 
 * *Note 1:* this assumes you do not have \LaTeX installed on your computer \newline
 (which is needed to create PDF files with R Markdown.)
@@ -146,7 +146,7 @@ a dependency of **rmarkdown**)
     tinytex::install_tinytex()
     ```
     
-    (this will take a few minutes) \pause
+    (this will take a few minutes) 
 
 * Windows users may see a warning about needing to install the Rtools program, and 2 warnings complaining about missing files associated with `luatex.dll`
 
@@ -187,11 +187,11 @@ a dependency of **rmarkdown**)
 
 ## Dynamic Document: intro
 
-Let's get some practice making a dynamic document (and using markdown)... \pause
+Let's get some practice making a dynamic document (and using markdown)... 
 
 * In the R Studio menu bar: **File**...**New File**...**R Markdown**
 
-  + Choose **Document** (any format is fine) \pause
+  + Choose **Document** (any format is fine) 
   
 * This will provide us with a basic template for a dynamic document
 
@@ -199,7 +199,7 @@ Let's get some practice making a dynamic document (and using markdown)... \pause
   (e.g., output format is PDF or Word doc)
   
   + **code chunks** -- blocks where we include R commands (that will be evaluated with the results included
-  in the dynamic doc) \pause
+  in the dynamic doc) 
 
 * Before we dive in a quick markdown review and more on code chunks
 
@@ -243,13 +243,21 @@ plot(cars)
 ```
 ````
 
-\pause
+
 * Useful options:
   + `echo = FALSE` - don't show the code, but do show the results in the dynamic doc
   + `include = FALSE` - exclude code and results from appearing in the dynamic doc 
   + `eval = FALSE` - don't run the code in the code chunk
 
 * [\textcolor{blue}{link to description of all options}](https://yihui.org/knitr/options/#code-evaluation)
+
+
+## Dynamic Document: producing output
+
+click on the knitting needles icon in the toolbar to produce the output (don't forget to 
+save your file)
+
+![1st warning message](png/dyn_doc.png)
    
 
 ## Intro to R Syntax & Data Structures
@@ -260,7 +268,7 @@ We'll now shift gears a bit and introduce...
 
 2. some logic for understanding types of objects created by R
 
-  + (i.e., different ways we can hold data) \pause
+  + (i.e., different ways we can hold data) 
   
 * probably best to open up the script `r_script_sept1.R` ([\textcolor{blue}{from GitHub repo}](https://github.com/jarathomas/sociol8802))
 
@@ -299,46 +307,46 @@ We'll now shift gears a bit and introduce...
 ## Data Structures
 
 * Now we'll learn the basic logic for understanding some of the different types of
-objects that R uses \pause
+objects that R uses 
 
 * R has different structures for holding data, which can be 
-organized by... \pause
+organized by... 
 
-    + how many dimensions does it have? \pause
+    + how many dimensions does it have? 
 
     + do the types of data need to be the same?
 
   
 ## Data Structures
 
-* **Vectors** \pause
+* **Vectors** 
 
   1. 1 dimension
   
   1. same data type
-    + special case: **factor** (predefined categories)  \pause
+    + special case: **factor** (predefined categories)  
 
-* **Matrices** \pause
+* **Matrices** 
 
   1. rows and columns
   
-  1. same data type \pause
+  1. same data type 
 
-* **Arrays** \pause
+* **Arrays** 
 
   1. any number of dimensions
-  1. same data type \pause
+  1. same data type 
 
   
 ## Data Structures
 
-* **Data Frames** \pause
+* **Data Frames** 
 
   1. rows and columns
   
-  1. different data types \pause
+  1. different data types 
 
-* **Lists** \pause
+* **Lists** 
 
   1. 1 dimension
   
