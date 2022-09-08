@@ -43,7 +43,7 @@ ls()
 # 0.3: Check Libraries and Access Help Files
 library()                 ## list the libraries (or packages) that are installed on your computer
 install.packages("haven") ## install the haven package (only need to do this once)
-## install.packages(c("dplyr", "ggplot2"))  ## install multiple mpackages
+## install.packages(c("dplyr", "ggplot2"))  ## install multiple packages
 help(package = "haven")
 library(haven)
 ?read_dta
@@ -81,7 +81,7 @@ names(more_data)
 
 # 0.5 Exercises
 
-## [1] Create a new object/vector, called X, that holds the numbers for 1 to 10.
+## [1] Create a new object/vector, called X, that holds the numbers for 1 to 1000.
 
 ## [2] Create a new vector, called X_log, that is equal to the log of X.
 
@@ -100,9 +100,9 @@ n
 
 
 #-----------------------------------------------------------------------------#
-# Brief break to learn about data types and data structures                   # 
+# 1: WORKING WITH VECTORS                                                     # 
 #-----------------------------------------------------------------------------#
-## useful functions: length(), summary(), rep(), sort(), order()
+## 1.1: useful functions: length(), summary(), rep(), sort(), order()
 x <- 1:10
 x
 length(x)
@@ -118,13 +118,47 @@ order(x)     ## how do we get the order from largest to smallest?
 
 ## seq() can also be helpful
 
-## basic indexing, missing data, and ugh!
+## 1.2: basic indexing, missing data, and ugh!
 x[2]
 x[2] <- NA  ## we will change the second number to NA (R's way of indicating missing data/values)
 sum(x)      ## uh-oh, can you figure out how to fix this so we get an actual number?
 
+#-----------------------------------------------------------------------------#
+# 2: WORKING WITH DATA FRAMES                                                 # 
+#-----------------------------------------------------------------------------#
 
-## Now let's learn about other types of data structures (back to the slides)
+# 2.1: basic information
+mtcars
+head(mtcars, n = 2)
+is.data.frame(mtcars)
+names(mtcars)
+mtcars$mpg
+dim(mtcars)    ## or you can use nrow(mtcars) or ncol(mtcars) if you are only interested in 1 dimension
+str(mtcars)
+summary(mtcars)
+
+# 2.3: indexing
+mtcars[2, 1]      ## look at value in second row, first column
+mtcars[1:3, 1]    ## look at first 3 rows in the first column
+mtcars[, 1]       ## look at the entire first column
+
+## list the last 8 values in the 5th column
+## list the values in every column, but only the first 3 rows
+
+# 2.3: creating new columns
+summary(mtcars$mpg)
+mtcars$mpg < mean(mtcars$mpg)
+mtcars$low_mpg <- mtcars$mpg < mean(mtcars$mpg)
+table(mtcars$low_mpg)
+
+# 2.4: making changes
+table(mtcars$cyl)
+mtcars$cyl_eq8 <- 0
+table(mtcars$cyl, mtcars$cyl_eq8)
+mtcars$cyl_eq8[mtcars$cyl == 8]
+length(mtcars$cyl_eq8[mtcars$cyl == 8])
+mtcars$cyl_eq8[mtcars$cyl == 8] <- 1
+table(mtcars$cyl, mtcars$cyl_eq8)
 
 #---------------------------------------------------------------------#
 # 99: ALL DONE
