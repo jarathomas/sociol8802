@@ -52,7 +52,7 @@ knitr::opts_chunk$set(echo = FALSE)
     + R script with useful commands for getting started
     + understanding R objects 
 
-* **Sept 9$^{th}$**
+* **Sept 8$^{th}$**
 
     - cleaning & preparing data
     - regression
